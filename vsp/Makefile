@@ -1,9 +1,12 @@
 .PHONY: all
-all: signing-private-key.pk8 signing-certificate.crt encryption-private-key.pk8 encryption-certificate.crt
+all: pki pki/signing-private-key.pk8 pki/signing-certificate.crt pki/encryption-private-key.pk8 pki/encryption-certificate.crt
 
 .PHONY: clean
 clean:
-	rm -f *.*
+	rm -rf pki
+
+pki:
+	mkdir pki
 
 %.pk8: %.pem
 	openssl pkcs8 -topk8 -inform PEM -outform DER -in $< -nocrypt -out $@

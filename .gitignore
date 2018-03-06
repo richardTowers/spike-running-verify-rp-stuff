@@ -1,0 +1,3 @@
+.vagrant
+*/pki/*.crt
+*/pki/*.pk8
